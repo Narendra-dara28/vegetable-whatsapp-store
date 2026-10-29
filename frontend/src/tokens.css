@@ -1,0 +1,152 @@
+/* ==========================================================================
+   GREEN BASKET DESIGN SYSTEM TOKENS
+   Mobile-First (360px - 430px) | Telugu + English Typography | 8px Spacing Grid
+   ========================================================================== */
+
+:root {
+   /* ------------------------------------------------------------------------
+     1. BRAND COLORS
+     ------------------------------------------------------------------------ */
+   --color-primary: #16A34A;
+   --color-primary-dark: #166534;
+   --color-primary-light: #DCFCE7;
+
+   /* Accent Orange */
+   --color-accent: #F97316;
+   --color-accent-light: #FFEDD5;
+
+   /* Surfaces & Borders */
+   --color-bg-page: #F8FAF5;
+   --color-bg-card: #FFFFFF;
+   --color-border: #E5E7EB;
+
+   /* Typography / Text */
+   --color-text-main: #1F2937;
+   --color-text-muted: #6B7280;
+
+   /* WhatsApp Action (ONLY for WhatsApp buttons) */
+   --color-whatsapp: #25D366;
+   --color-whatsapp-dark: #1ebd5b;
+
+   /* ------------------------------------------------------------------------
+     2. STATUS COLORS (Identical across customer & admin screens)
+     Each status: Light tint background + dark text of the same color
+     ------------------------------------------------------------------------ */
+   /* New */
+   --status-new: #F97316;
+   --status-new-bg: #FFEDD5;
+   --status-new-border: #FED7AA;
+
+   /* Confirmed */
+   --status-confirmed: #2563EB;
+   --status-confirmed-bg: #DBEAFE;
+   --status-confirmed-border: #BFDBFE;
+
+   /* Out for Delivery */
+   --status-out-for-delivery: #0891B2;
+   --status-out-for-delivery-bg: #CFFAFE;
+   --status-out-for-delivery-border: #A5F3FC;
+
+   /* Delivered / Completed */
+   --status-delivered: #16A34A;
+   --status-delivered-bg: #DCFCE7;
+   --status-delivered-border: #BBF7D0;
+
+   /* Cancelled */
+   --status-cancelled: #DC2626;
+   --status-cancelled-bg: #FEE2E2;
+   --status-cancelled-border: #FECACA;
+
+   /* ------------------------------------------------------------------------
+     3. CATEGORY TAGS
+     ------------------------------------------------------------------------ */
+   /* Fruits (light orange) */
+   --cat-fruits-text: #C2410C;
+   --cat-fruits-bg: #FFEDD5;
+   --cat-fruits-border: #FED7AA;
+
+   /* Vegetables (light green) */
+   --cat-vegetables-text: #15803D;
+   --cat-vegetables-bg: #DCFCE7;
+   --cat-vegetables-border: #BBF7D0;
+
+   /* Leafy Greens (light teal) */
+   --cat-leafy-text: #0F766E;
+   --cat-leafy-bg: #CCFBF1;
+   --cat-leafy-border: #99F6E4;
+
+   /* ------------------------------------------------------------------------
+     4. STOCK STATUS
+     ------------------------------------------------------------------------ */
+   /* In Stock (green tint) */
+   --stock-in-text: #166534;
+   --stock-in-bg: #DCFCE7;
+   --stock-in-border: #BBF7D0;
+
+   /* Sold Out (red tint) */
+   --stock-out-text: #991B1B;
+   --stock-out-bg: #FEE2E2;
+   --stock-out-border: #FECACA;
+
+   /* ------------------------------------------------------------------------
+     5. TYPOGRAPHY
+     Primary: Plus Jakarta Sans | Fallback: Noto Sans Telugu (for Telugu script)
+     Body: 14-16px | Titles: 18-20px | Prices: bold (heavy) | Minimum: 12px
+     ------------------------------------------------------------------------ */
+   --font-family: 'Plus Jakarta Sans', 'Noto Sans Telugu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+   --font-family-telugu: 'Noto Sans Telugu', 'Plus Jakarta Sans', sans-serif;
+
+   /* Sizes */
+   --font-size-xs: 12px;
+   /* Absolute minimum size */
+   --font-size-sm: 13px;
+   --font-size-body-sm: 14px;
+   /* Body range lower bound */
+   --font-size-body: 15px;
+   /* Body default */
+   --font-size-body-lg: 16px;
+   /* Body range upper bound */
+   --font-size-title: 18px;
+   /* Title lower bound */
+   --font-size-title-lg: 20px;
+   /* Title upper bound */
+   --font-size-xl: 24px;
+
+   /* Weights */
+   --font-weight-regular: 400;
+   --font-weight-medium: 500;
+   --font-weight-semibold: 600;
+   --font-weight-bold: 700;
+   --font-weight-heavy: 800;
+   /* Prices & prominent numbers */
+
+   /* ------------------------------------------------------------------------
+     6. SHAPES & ELEVATION
+     Card radius 16px | Button radius 12px | Soft shadow
+     ------------------------------------------------------------------------ */
+   --radius-card: 16px;
+   --radius-btn: 12px;
+   --radius-badge: 9999px;
+   --radius-input: 12px;
+
+   /* Soft shadows */
+   --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.05);
+   --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.04);
+   --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
+   --shadow-modal: 0 10px 30px rgba(0, 0, 0, 0.12);
+   --shadow-btn-primary: 0 2px 8px rgba(22, 163, 74, 0.25);
+   --shadow-btn-whatsapp: 0 2px 8px rgba(37, 211, 102, 0.28);
+
+   /* ------------------------------------------------------------------------
+     7. SPACING GRID (8px scale, 16px mobile page padding)
+     ------------------------------------------------------------------------ */
+   --spacing-1: 4px;
+   --spacing-2: 8px;
+   --spacing-3: 12px;
+   --spacing-4: 16px;
+   /* Mobile page padding */
+   --spacing-5: 20px;
+   --spacing-6: 24px;
+   --spacing-8: 32px;
+   --page-padding: 16px;
+}

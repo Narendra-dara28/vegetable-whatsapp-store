@@ -1,0 +1,313 @@
+@import './tokens.css';
+
+/* Design System & Global Styles */
+:root {
+  --font-main: var(--font-family);
+
+  /* Primary Green Palette mapped to Design Tokens */
+  --primary-50: #f0fdf4;
+  --primary-100: var(--color-primary-light);
+  --primary-200: #bbf7d0;
+  --primary-500: #22c55e;
+  --primary-600: var(--color-primary);
+  --primary-700: #15803d;
+  --primary-800: var(--color-primary-dark);
+
+  /* Accent & Status Colors */
+  --accent-amber: var(--color-accent);
+  --accent-amber-light: var(--color-accent-light);
+  --accent-amber-dark: #c2410c;
+  --danger-500: var(--status-cancelled);
+  --danger-100: var(--status-cancelled-bg);
+  --danger-700: #b91c1c;
+
+  /* Neutrals & Surfaces */
+  --bg-app: var(--color-bg-page);
+  --bg-card: var(--color-bg-card);
+  --text-main: var(--color-text-main);
+  --text-muted: var(--color-text-muted);
+  --text-subtle: #9ca3af;
+  --border-subtle: var(--color-border);
+  --border-focus: var(--color-primary);
+
+  /* Elevations */
+  --shadow-sm: var(--shadow-soft);
+  --shadow-md: var(--shadow-card);
+  --shadow-lg: var(--shadow-card-hover);
+  --shadow-xl: var(--shadow-modal);
+
+  --radius-sm: 8px;
+  --radius-md: var(--radius-btn);
+  --radius-lg: var(--radius-card);
+  --radius-full: var(--radius-badge);
+
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-page);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(22, 163, 74, 0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+.spinner-dark {
+  border: 2px solid rgba(15, 23, 42, 0.15);
+  border-top-color: var(--primary-700);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-green {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+}
+
+.badge-amber {
+  background-color: var(--accent-amber-light);
+  color: var(--accent-amber-dark);
+}
+
+.badge-gray {
+  background-color: #f1f5f9;
+  color: var(--text-muted);
+}
+
+.badge-red {
+  background-color: var(--danger-100);
+  color: var(--danger-700);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn-danger {
+  background-color: var(--danger-100);
+  color: var(--danger-700);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Custom Order Scrollbar */
+.custom-order-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8fafc;
+}
+
+.custom-order-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-order-scroll::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.custom-order-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 8px;
+}
+
+.custom-order-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Customer Responsive Product Grid */
+.customer-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* Soft Pulse for Active Tracking Step */
+@keyframes softPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+.step-pulse {
+  animation: softPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Shimmer animation for Skeleton Cards */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-box {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite;
+  border-radius: var(--radius-sm, 8px);
+}
+
+/* Responsive helper for Admin Orders Search & Refresh bar */
+@media (max-width: 640px) {
+  .refresh-btn-text {
+    display: none !important;
+  }
+  .refresh-orders-btn {
+    padding: 8px 12px !important;
+    min-width: 44px !important;
+  }
+}
