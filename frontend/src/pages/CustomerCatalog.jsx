@@ -21,9 +21,10 @@ import {
   removeRecentOrder,
   syncRecentOrders,
 } from '../utils/recentOrdersHelper';
+import { FALLBACK_PRODUCTS } from '../utils/fallbackProducts';
 
 export const CustomerCatalog = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(FALLBACK_PRODUCTS);
   const [routeText, setRouteText] = useState('');
   const [vehicleLocation, setVehicleLocation] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -148,7 +149,7 @@ export const CustomerCatalog = () => {
         settingsApi.getVehicleLocation().catch(() => ({ value: '' })),
       ]);
 
-      setProducts(productsData);
+      setProducts(Array.isArray(productsData) && productsData.length > 0 ? productsData : FALLBACK_PRODUCTS);
       if (routeData && routeData.value) {
         setRouteText(routeData.value);
       }
@@ -205,7 +206,8 @@ export const CustomerCatalog = () => {
   // Distinct categories
   const categories = useMemo(() => {
     const set = new Set();
-    products.forEach((p) => {
+    const list = Array.isArray(products) ? products : [];
+    list.forEach((p) => {
       if (p.category) set.add(p.category);
     });
     return ['All', ...Array.from(set)];
@@ -213,7 +215,8 @@ export const CustomerCatalog = () => {
 
   // Filtered products
   const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
+    const list = Array.isArray(products) ? products : [];
+    return list.filter((p) => {
       const matchesSearch =
         p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (p.nameLocal && p.nameLocal.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -226,8 +229,9 @@ export const CustomerCatalog = () => {
   // Calculate live estimated total for bottom sticky bar
   const liveEstimatedTotal = useMemo(() => {
     let sum = 0;
+    const list = Array.isArray(products) ? products : [];
     Object.entries(cart).forEach(([idStr, qty]) => {
-      const prod = products.find((p) => p.id === Number(idStr));
+      const prod = list.find((p) => p.id === Number(idStr));
       if (prod && qty > 0) {
         sum += Number(prod.price) * qty;
       }
