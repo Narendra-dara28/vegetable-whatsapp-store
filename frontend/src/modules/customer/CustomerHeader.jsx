@@ -78,14 +78,12 @@ export const CustomerHeader = ({
 
             <p
               style={{
-                fontSize: '0.72rem',
+                fontSize: '0.70rem',
                 color: 'var(--color-primary-dark, #166534)',
                 fontWeight: '600',
                 margin: 0,
-                marginTop: '1px',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
+                marginTop: '2px',
+                lineHeight: 1.25,
               }}
             >
               Farm-Fresh Vegetables & Fruits
