@@ -6,8 +6,8 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 
 ## 🚀 Quick Access Links
 
-* **Customer Storefront**: https://vegetable-whatsapp-store.pages.dev
-* **Admin Portal**: https://vegetable-whatsapp-store.pages.dev/admin/login
+* **Customer Storefront**: https://greenbasket-store.pages.dev
+* **Admin Portal**: https://greenbasket-store.pages.dev/admin/login
 * **Backend API Direct**: https://greenbasket-backend-30sl.onrender.com/api/products
 
 ---
@@ -16,7 +16,7 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 
 | Service Tier | Provider | Service / Project Name | Production URL / Host |
 | :--- | :--- | :--- | :--- |
-| **Frontend Web App** | Cloudflare Pages | `vegetable-whatsapp-store` | [vegetable-whatsapp-store.pages.dev](https://vegetable-whatsapp-store.pages.dev) |
+| **Frontend Web App** | Cloudflare Pages | `greenbasket-store` | [greenbasket-store.pages.dev](https://greenbasket-store.pages.dev) |
 | **Backend REST API** | Render Web Services | `greenbasket-backend` | [greenbasket-backend-30sl.onrender.com](https://greenbasket-backend-30sl.onrender.com) |
 | **Cloud PostgreSQL DB** | Supabase | `greenbasket-db` | `aws-0-<REGION>.pooler.supabase.com:5432` |
 | **GitHub Source Code** | GitHub | `vegetable-whatsapp-store` | [github.com/Narendra-dara28/vegetable-whatsapp-store](https://github.com/Narendra-dara28/vegetable-whatsapp-store) |
@@ -26,7 +26,7 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 
 ## 🔐 Admin Dashboard Credentials
 
-* **Admin Login Route**: [`/admin/login`](https://vegetable-whatsapp-store.pages.dev/admin/login)
+* **Admin Login Route**: [`/admin/login`](https://greenbasket-store.pages.dev/admin/login)
 * **Username**: Set via `APP_ADMIN_USERNAME` in Render environment variables
 * **Password**: Set via `APP_ADMIN_PASSWORD` in Render environment variables *(Kept private; never hardcoded in repository)*
 * **Capabilities**:
@@ -43,7 +43,7 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 [ Customer Browser ]
        │
        ▼
-[ Cloudflare Pages (Frontend CDN) ] ── (https://vegetable-whatsapp-store.pages.dev)
+[ Cloudflare Pages (Frontend CDN) ] ── (https://greenbasket-store.pages.dev)
        │
        ├──► WhatsApp Order Dispatch ──► [ Merchant WhatsApp: +91 7569479098 ]
        │
