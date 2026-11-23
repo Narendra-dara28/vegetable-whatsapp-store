@@ -94,28 +94,25 @@ export const StoreQrModal = ({ isOpen, onClose }) => {
         </button>
 
         {/* Header Icon & Title */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '12px' }}>
           <div
             style={{
-              width: '44px',
-              height: '44px',
+              width: '42px',
+              height: '42px',
               borderRadius: '12px',
               background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
               border: '1.5px solid #a7f3d0',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              marginBottom: '6px',
+              marginBottom: '8px',
             }}
           >
-            <QrCode size={24} color="#059669" />
+            <QrCode size={22} color="#059669" />
           </div>
-          <h2 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#111827', margin: 0 }}>
-            Green Basket Store QR
-          </h2>
-          <p style={{ fontSize: '0.74rem', color: '#047857', fontWeight: '600', marginTop: '3px', marginBottom: 0 }}>
+          <h2 style={{ fontSize: '1.02rem', fontWeight: '800', color: '#111827', margin: 0, lineHeight: 1.3 }}>
             Scan or download to order anytime
-          </p>
+          </h2>
         </div>
 
         {/* QR Code Container */}

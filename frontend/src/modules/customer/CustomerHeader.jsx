@@ -66,46 +66,18 @@ export const CustomerHeader = ({
           </div>
 
           <div style={{ minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-              <h1
-                style={{
-                  fontSize: '1.05rem',
-                  fontWeight: '800',
-                  color: 'var(--color-text-main, #1F2937)',
-                  lineHeight: 1.2,
-                  margin: 0,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Green Basket
-              </h1>
-
-              {/* Prominent Top-Left QR Button / Badge */}
-              <button
-                type="button"
-                onClick={onQrClick}
-                title="Save / Download Store QR code to open anytime"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  padding: '3px 8px',
-                  borderRadius: '999px',
-                  backgroundColor: '#ecfdf5',
-                  border: '1px solid #10b981',
-                  color: '#065f46',
-                  fontSize: '0.70rem',
-                  fontWeight: '700',
-                  cursor: 'pointer',
-                  boxShadow: '0 1px 2px rgba(16, 185, 129, 0.15)',
-                  transition: 'all 0.15s ease',
-                  flexShrink: 0,
-                }}
-              >
-                <QrCode size={13} strokeWidth={2.2} color="#059669" />
-                <span>Save QR</span>
-              </button>
-            </div>
+            <h1
+              style={{
+                fontSize: '1.05rem',
+                fontWeight: '800',
+                color: 'var(--color-text-main, #1F2937)',
+                lineHeight: 1.2,
+                margin: 0,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Green Basket
+            </h1>
 
             <p
               style={{
@@ -126,7 +98,7 @@ export const CustomerHeader = ({
 
         {/* Header Action Buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
-          {/* QR Code Action Button for desktop / larger views */}
+          {/* QR Code Action Button */}
           <button
             type="button"
             onClick={onQrClick}
@@ -147,10 +119,10 @@ export const CustomerHeader = ({
               transition: 'all 0.15s ease',
               boxSizing: 'border-box',
             }}
-            title="Scan or download store QR code"
+            title="Scan or download QR code"
           >
             <QrCode size={16} strokeWidth={1.75} color="var(--color-primary, #16A34A)" />
-            <span>Store QR</span>
+            <span>QR</span>
           </button>
 
           {/* Track Order Button */}
@@ -194,34 +166,6 @@ export const CustomerHeader = ({
               </span>
             )}
           </button>
-
-          {/* Clean store open indicator dot */}
-          <div
-            title="Store Open Today"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '24px',
-              height: '24px',
-              borderRadius: '50%',
-              backgroundColor: '#dcfce7',
-              border: '1px solid #bbf7d0',
-              userSelect: 'none',
-              flexShrink: 0,
-            }}
-          >
-            <span
-              style={{
-                display: 'inline-block',
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: '#16a34a',
-                boxShadow: '0 0 6px #16a34a',
-              }}
-            />
-          </div>
         </div>
       </div>
     </header>
