@@ -4,6 +4,14 @@ GreenBasket is a production-grade, bilingual (Telugu & English) e-commerce and m
 
 ---
 
+## 🚀 Quick Access Links
+
+* **Customer Storefront**: https://vegetable-whatsapp-store.pages.dev
+* **Admin Portal**: https://vegetable-whatsapp-store.pages.dev/admin/login
+* **Backend API Direct**: https://greenbasket-backend-30sl.onrender.com/api/products
+
+---
+
 ## 📌 Master Production Reference
 
 | Service Tier | Provider | Service / Project Name | Production URL / Host |
