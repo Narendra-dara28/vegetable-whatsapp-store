@@ -112,6 +112,7 @@ public class SecurityConfig {
                         // Permit all preflight OPTIONS requests
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Public Endpoints
+                        .requestMatchers("/healthz").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                         .requestMatchers("/api/orders", "/api/orders/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/settings/**").permitAll()
