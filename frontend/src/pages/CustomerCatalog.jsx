@@ -14,6 +14,7 @@ import {
   WhatsAppOrderModal,
   CartDrawer,
   TrackOrderModal,
+  StoreQrModal,
 } from '../modules/customer';
 import {
   getActiveRecentOrders,
@@ -36,6 +37,7 @@ export const CustomerCatalog = () => {
   const [orderModalStep, setOrderModalStep] = useState('PENDING'); // 'PENDING' | 'CONFIRMED'
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
   const [isTrackModalOpen, setIsTrackModalOpen] = useState(false);
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   // Instant initial count directly from helper
   const [recentOrders, setRecentOrders] = useState(getActiveRecentOrders);
   const { showToast } = useNotification();
@@ -355,6 +357,7 @@ export const CustomerCatalog = () => {
         onHoldStart={handleHoldStart}
         onHoldEnd={handleHoldEnd}
         onTrackOrderClick={handleTrackOrderClick}
+        onQrClick={() => setIsQrModalOpen(true)}
         recentOrdersCount={recentOrders.length}
       />
 
@@ -456,6 +459,12 @@ export const CustomerCatalog = () => {
           setIsTrackModalOpen(false);
           updateRecentOrders();
         }}
+      />
+
+      {/* Store QR Download & Scan Modal */}
+      <StoreQrModal
+        isOpen={isQrModalOpen}
+        onClose={() => setIsQrModalOpen(false)}
       />
     </div>
   );

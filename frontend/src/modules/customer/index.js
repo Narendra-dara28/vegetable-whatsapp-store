@@ -7,3 +7,4 @@ export { WhatsAppOrderModal } from './WhatsAppOrderModal';
 export { CartDrawer } from './CartDrawer';
 export { TrackOrderModal } from './TrackOrderModal';
 export { LocationPickerModal } from './LocationPickerModal';
+export { StoreQrModal } from './StoreQrModal';
