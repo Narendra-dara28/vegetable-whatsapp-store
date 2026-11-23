@@ -10,7 +10,7 @@ GreenBasket is a production-grade, bilingual (Telugu & English) e-commerce and m
 | :--- | :--- | :--- | :--- |
 | **Frontend Web App** | Cloudflare Pages | `vegetable-whatsapp-store` | [vegetable-whatsapp-store.pages.dev](https://vegetable-whatsapp-store.pages.dev) |
 | **Backend REST API** | Render Web Services | `greenbasket-backend` | [greenbasket-backend-30sl.onrender.com](https://greenbasket-backend-30sl.onrender.com) |
-| **Cloud PostgreSQL DB** | Supabase | `greenbasket-db` | `aws-0-ap-southeast-2.pooler.supabase.com:5432` |
+| **Cloud PostgreSQL DB** | Supabase | `greenbasket-db` | `aws-0-<REGION>.pooler.supabase.com:5432` |
 | **GitHub Source Code** | GitHub | `vegetable-whatsapp-store` | [github.com/Narendra-dara28/vegetable-whatsapp-store](https://github.com/Narendra-dara28/vegetable-whatsapp-store) |
 | **Merchant WhatsApp** | WhatsApp API | GreenBasket Direct | `+91 7569479098` |
 
@@ -19,8 +19,8 @@ GreenBasket is a production-grade, bilingual (Telugu & English) e-commerce and m
 ## 🔐 Admin Dashboard Credentials
 
 * **Admin Login Route**: [`/admin/login`](https://vegetable-whatsapp-store.pages.dev/admin/login)
-* **Default Username**: `SIva`
-* **Default Password**: `Siva@8179`
+* **Username**: Set via `APP_ADMIN_USERNAME` in Render environment variables
+* **Password**: Set via `APP_ADMIN_PASSWORD` in Render environment variables *(Kept private; never hardcoded in repository)*
 * **Features**:
   * **Morning Price Update**: Batch-update daily market vegetable/fruit prices with instant storefront sync.
   * **Availability Toggle**: Mark items in-stock or out-of-stock.
@@ -43,7 +43,7 @@ GreenBasket is a production-grade, bilingual (Telugu & English) e-commerce and m
 [ Render Web Service (Spring Boot 3 Docker) ] ── (https://greenbasket-backend-30sl.onrender.com)
        │
        ▼ (JDBC / IPv4 Session Pooler with SSL)
-[ Supabase PostgreSQL (Cloud Database) ] ── (aws-0-ap-southeast-2.pooler.supabase.com)
+[ Supabase PostgreSQL (Cloud Database) ] ── (aws-0-<REGION>.pooler.supabase.com)
 ```
 
 ---
@@ -68,7 +68,7 @@ GreenBasket is a production-grade, bilingual (Telugu & English) e-commerce and m
     VITE_API_URL=https://greenbasket-backend-30sl.onrender.com
     VITE_WHATSAPP_NUMBER=917569479098
     ```
-  * `frontend/.env` (Used for Localhost development with Vite proxy):
+  * `frontend/.env.example` (Template for local development):
     ```env
     VITE_API_URL=
     VITE_WHATSAPP_NUMBER=917569479098
@@ -90,24 +90,23 @@ GreenBasket is a production-grade, bilingual (Telugu & English) e-commerce and m
 
 ### 3. Database (Supabase PostgreSQL)
 * **Project Name**: `greenbasket-db`
-* **Region**: `ap-southeast-2` (Sydney / AWS)
 * **Connection Type**: **Session Pooler** (Mandatory for Render IPv4 compatibility)
-* **Host**: `aws-0-ap-southeast-2.pooler.supabase.com`
 * **Port**: `5432`
 * **Database Name**: `postgres`
-* **User**: `postgres.sikughvzthzlbtoyjnoh`
 * **SSL Mode**: `sslmode=require`
 
 ---
 
 ## 🔑 Backend Environment Variables (Render Dashboard)
 
-| Variable Key | Production Value | Purpose |
+| Variable Key | Value Source | Purpose |
 | :--- | :--- | :--- |
-| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres?sslmode=require` | Database JDBC connection string |
-| `SPRING_DATASOURCE_USERNAME` | `postgres.sikughvzthzlbtoyjnoh` | Supabase pooled user |
-| `SPRING_DATASOURCE_PASSWORD` | *(Configured Supabase DB password)* | Database access credential |
-| `APP_JWT_SECRET` | `404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970` | 256-bit HS256 JWT encryption key |
+| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://<SUPABASE_HOST>:5432/postgres?sslmode=require` | Database JDBC connection string |
+| `SPRING_DATASOURCE_USERNAME` | `postgres.<PROJECT_REF>` | Supabase pooled user |
+| `SPRING_DATASOURCE_PASSWORD` | *(Secure Supabase DB password)* | Database access credential |
+| `APP_JWT_SECRET` | *(64-character Hex secret key)* | 256-bit HS256 JWT encryption key |
+| `APP_ADMIN_USERNAME` | *(Admin username, e.g. SIva)* | Merchant admin login ID |
+| `APP_ADMIN_PASSWORD` | *(Private admin password)* | Merchant admin login password |
 | `PORT` | `8080` | Container HTTP listener port |
 
 ---
@@ -130,13 +129,6 @@ cd d:\MyProject\vegetable-whatsapp-app\backend
 ```
 * Opens on **`http://localhost:8080`**.
 * Connects to local PostgreSQL by default (`jdbc:postgresql://localhost:5432/vegetable_db`).
-* To run locally connected to Supabase:
-  ```powershell
-  $env:SPRING_DATASOURCE_URL="jdbc:postgresql://aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres?sslmode=require"
-  $env:SPRING_DATASOURCE_USERNAME="postgres.sikughvzthzlbtoyjnoh"
-  $env:SPRING_DATASOURCE_PASSWORD="YourPasswordHere"
-  .\mvnw.cmd spring-boot:run
-  ```
 
 ---
 
@@ -153,4 +145,3 @@ cd d:\MyProject\vegetable-whatsapp-app\backend
    * Update `VITE_WHATSAPP_NUMBER` in `frontend/.env.production` and push to GitHub.
 5. **Triggering Manual Deploy on Render**:
    * Go to Render ➔ `greenbasket-backend` ➔ **Manual Deploy** ➔ **Clear build cache & deploy**.
-

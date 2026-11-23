@@ -10,7 +10,7 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 | :--- | :--- | :--- | :--- |
 | **Frontend Web App** | Cloudflare Pages | `vegetable-whatsapp-store` | [vegetable-whatsapp-store.pages.dev](https://vegetable-whatsapp-store.pages.dev) |
 | **Backend REST API** | Render Web Services | `greenbasket-backend` | [greenbasket-backend-30sl.onrender.com](https://greenbasket-backend-30sl.onrender.com) |
-| **Cloud PostgreSQL DB** | Supabase | `greenbasket-db` | `aws-0-ap-southeast-2.pooler.supabase.com:5432` |
+| **Cloud PostgreSQL DB** | Supabase | `greenbasket-db` | `aws-0-<REGION>.pooler.supabase.com:5432` |
 | **GitHub Source Code** | GitHub | `vegetable-whatsapp-store` | [github.com/Narendra-dara28/vegetable-whatsapp-store](https://github.com/Narendra-dara28/vegetable-whatsapp-store) |
 | **Merchant WhatsApp** | WhatsApp API | GreenBasket Direct | `+91 7569479098` |
 
@@ -19,8 +19,8 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 ## 🔐 Admin Dashboard Credentials
 
 * **Admin Login Route**: [`/admin/login`](https://vegetable-whatsapp-store.pages.dev/admin/login)
-* **Default Username**: `SIva`
-* **Default Password**: `Siva@8179`
+* **Username**: Set via `APP_ADMIN_USERNAME` in Render environment variables
+* **Password**: Set via `APP_ADMIN_PASSWORD` in Render environment variables *(Kept private; never hardcoded in repository)*
 * **Capabilities**:
   * **Morning Price Update**: Batch-update daily market vegetable/fruit prices with instant storefront sync.
   * **Availability Toggle**: Mark items in-stock or out-of-stock.
@@ -43,7 +43,7 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 [ Render Web Service (Spring Boot 3 Docker) ] ── (https://greenbasket-backend-30sl.onrender.com)
        │
        ▼ (JDBC / IPv4 Session Pooler with SSL)
-[ Supabase PostgreSQL (Cloud Database) ] ── (aws-0-ap-southeast-2.pooler.supabase.com)
+[ Supabase PostgreSQL (Cloud Database) ] ── (aws-0-<REGION>.pooler.supabase.com)
 ```
 
 ---
@@ -68,7 +68,7 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
     VITE_API_URL=https://greenbasket-backend-30sl.onrender.com
     VITE_WHATSAPP_NUMBER=917569479098
     ```
-  * `frontend/.env` (Used for Localhost development with Vite proxy):
+  * `frontend/.env.example` (Template for local development):
     ```env
     VITE_API_URL=
     VITE_WHATSAPP_NUMBER=917569479098
@@ -90,26 +90,25 @@ Welcome to the **GreenBasket** (Vegetable & Fruit WhatsApp Store) documentation.
 
 ### 3. Database (Supabase PostgreSQL)
 * **Project Name**: `greenbasket-db`
-* **Region**: `ap-southeast-2` (Sydney / AWS)
 * **Connection Type**: **Session Pooler** (Mandatory for Render IPv4 compatibility)
-* **Host**: `aws-0-ap-southeast-2.pooler.supabase.com`
 * **Port**: `5432`
 * **Database Name**: `postgres`
-* **User**: `postgres.sikughvzthzlbtoyjnoh`
 * **SSL Mode**: `sslmode=require`
 
 ---
 
-## 🔑 Backend Environment Variables (Configured in Render)
+## 🔑 Backend Environment Variables (Configured Securely in Render)
 
-These environment variables are set in **Render ➔ greenbasket-backend ➔ Environment**:
+These environment variables are set in **Render ➔ greenbasket-backend ➔ Environment** (never stored in public code):
 
-| Variable Key | Production Value | Purpose |
+| Variable Key | Value Source | Purpose |
 | :--- | :--- | :--- |
-| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres?sslmode=require` | Database JDBC connection string |
-| `SPRING_DATASOURCE_USERNAME` | `postgres.sikughvzthzlbtoyjnoh` | Supabase pooled user |
-| `SPRING_DATASOURCE_PASSWORD` | *(Configured Supabase DB password)* | Database access credential |
-| `APP_JWT_SECRET` | `404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970` | 256-bit HS256 JWT encryption key |
+| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://<SUPABASE_HOST>:5432/postgres?sslmode=require` | Database JDBC connection string |
+| `SPRING_DATASOURCE_USERNAME` | `postgres.<PROJECT_REF>` | Supabase pooled user |
+| `SPRING_DATASOURCE_PASSWORD` | *(Secure Supabase DB password)* | Database access credential |
+| `APP_JWT_SECRET` | *(64-character Hex secret key)* | 256-bit HS256 JWT encryption key |
+| `APP_ADMIN_USERNAME` | *(Admin username, e.g. SIva)* | Merchant admin login ID |
+| `APP_ADMIN_PASSWORD` | *(Private admin password)* | Merchant admin login password |
 | `PORT` | `8080` | Container HTTP listener port |
 
 ---
@@ -132,13 +131,6 @@ cd d:\MyProject\vegetable-whatsapp-app\backend
 ```
 * Opens on **`http://localhost:8080`**.
 * Connects to local PostgreSQL by default (`jdbc:postgresql://localhost:5432/vegetable_db`).
-* To run locally connected to Supabase:
-  ```powershell
-  $env:SPRING_DATASOURCE_URL="jdbc:postgresql://aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres?sslmode=require"
-  $env:SPRING_DATASOURCE_USERNAME="postgres.sikughvzthzlbtoyjnoh"
-  $env:SPRING_DATASOURCE_PASSWORD="YourPasswordHere"
-  .\mvnw.cmd spring-boot:run
-  ```
 
 ---
 
@@ -151,15 +143,13 @@ cd d:\MyProject\vegetable-whatsapp-app\backend
 
 ### 2. Maven 429 Too Many Requests During Build
 * **Symptom**: Render build logs show `status code: 429, reason phrase: Too Many Requests (429)` from `repo.maven.apache.org`.
-* **Why**: Render's shared egress IPs get temporarily throttled by Maven Central.
-* **Fix Applied**: `backend/settings.xml` routes dependency downloads through the unthrottled `https://maven.aliyun.com/repository/public` mirror, and `Dockerfile` has Wagon retry logic configured.
+* **Fix Applied**: `backend/settings.xml` routes dependency downloads through the unthrottled `https://maven.aliyun.com/repository/public` mirror with automatic retry logic.
 
 ### 3. Page Refresh Shows 404 on Cloudflare Pages
-* **Symptom**: Navigating to `https://vegetable-whatsapp-store.pages.dev/admin/login` directly gives a Cloudflare 404 error.
 * **Fix**: Ensure `frontend/public/_redirects` exists with `/* /index.html 200` and commit to Git.
 
 ### 4. Updating the Merchant WhatsApp Number
-* Open `frontend/.env.production` and `frontend/.env`.
+* Open `frontend/.env.production`.
 * Update `VITE_WHATSAPP_NUMBER=<country_code_and_number>` (e.g. `917569479098` without spaces or `+`).
 * Commit and push to `main`; Cloudflare Pages will redeploy within 60 seconds.
 
