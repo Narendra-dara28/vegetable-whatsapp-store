@@ -153,3 +153,4 @@ cd d:\MyProject\vegetable-whatsapp-app\backend
    * Update `VITE_WHATSAPP_NUMBER` in `frontend/.env.production` and push to GitHub.
 5. **Triggering Manual Deploy on Render**:
    * Go to Render ➔ `greenbasket-backend` ➔ **Manual Deploy** ➔ **Clear build cache & deploy**.
+

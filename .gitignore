@@ -1,0 +1,6 @@
+
+# Local database and data folders
+data/
+backend/data/
+*.mv.db
+*.trace.db
