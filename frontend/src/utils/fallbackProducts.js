@@ -110,3 +110,4 @@ export const FALLBACK_PRODUCTS = [
     sortOrder: 10,
   },
 ];
+
