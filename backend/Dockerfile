@@ -1,15 +1,13 @@
 # Multi-stage Docker build for Spring Boot
-FROM eclipse-temurin:17-jdk-jammy AS build
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy Maven wrapper & pom
-COPY .mvn/ .mvn/
-COPY mvnw mvnw.cmd pom.xml ./
-RUN chmod +x mvnw
+# Copy pom.xml and source code
+COPY pom.xml ./
+COPY src ./src
 
 # Build application skipping tests for fast deployment
-COPY src ./src
-RUN ./mvnw clean package -DskipTests -B
+RUN mvn clean package -DskipTests -B
 
 # Stage 2: Minimal Production JRE Runtime
 FROM eclipse-temurin:17-jre-jammy
