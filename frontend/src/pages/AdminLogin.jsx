@@ -64,21 +64,18 @@ export const AdminLogin = () => {
       >
         {/* Brand Icon & Heading */}
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
-          <div
+          <img
+            src="/favicon.svg"
+            alt="Green Basket Logo"
             style={{
               width: '64px',
               height: '64px',
-              borderRadius: 'var(--radius-card, 16px)',
-              background: 'linear-gradient(135deg, var(--color-primary, #16A34A), var(--color-primary-dark, #166534))',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              borderRadius: '16px',
               boxShadow: '0 10px 15px -3px rgba(22, 163, 74, 0.3)',
               marginBottom: '14px',
+              display: 'inline-block',
             }}
-          >
-            <ShoppingBasket size={28} strokeWidth={1.75} color="#ffffff" />
-          </div>
+          />
           <h1 style={{ fontSize: '1.45rem', fontWeight: '800', color: 'var(--color-text-main, #1F2937)', letterSpacing: '-0.02em' }}>
             Green Basket Owner Login
           </h1>

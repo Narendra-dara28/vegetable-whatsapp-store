@@ -38,7 +38,9 @@ export const CustomerHeader = ({
       >
         {/* Brand Logo & Title with Secret Owner Access & QR Shortcut */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-          <div
+          <img
+            src="/favicon.svg"
+            alt="Green Basket Logo"
             onClick={onLogoTap}
             onTouchStart={onHoldStart}
             onTouchEnd={onHoldEnd}
@@ -49,21 +51,16 @@ export const CustomerHeader = ({
             style={{
               width: '40px',
               height: '40px',
-              borderRadius: 'var(--radius-btn, 12px)',
-              background: 'linear-gradient(135deg, var(--color-primary, #16a34a), var(--color-primary-dark, #166534))',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              borderRadius: '12px',
               boxShadow: 'var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05))',
               cursor: 'pointer',
               userSelect: 'none',
               WebkitUserSelect: 'none',
               transition: 'transform 0.15s ease',
               flexShrink: 0,
+              display: 'block',
             }}
-          >
-            <ShoppingBasket size={20} strokeWidth={1.75} color="#ffffff" />
-          </div>
+          />
 
           <div style={{ minWidth: 0 }}>
             <h1

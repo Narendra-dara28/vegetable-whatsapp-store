@@ -95,21 +95,18 @@ export const StoreQrModal = ({ isOpen, onClose }) => {
 
         {/* Header Icon & Title */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '12px' }}>
-          <div
+          <img
+            src="/favicon.svg"
+            alt="Green Basket"
             style={{
               width: '42px',
               height: '42px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
-              border: '1.5px solid #a7f3d0',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              boxShadow: '0 2px 6px rgba(16, 185, 129, 0.2)',
               marginBottom: '8px',
+              display: 'block',
             }}
-          >
-            <QrCode size={22} color="#059669" />
-          </div>
+          />
           <h2 style={{ fontSize: '1.02rem', fontWeight: '800', color: '#111827', margin: 0, lineHeight: 1.3 }}>
             Scan or download to order anytime
           </h2>

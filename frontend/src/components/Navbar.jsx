@@ -103,22 +103,18 @@ export const Navbar = () => {
         >
           {/* Brand Logo & Name */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div
+            <img
+              src="/favicon.svg"
+              alt="Green Basket Admin"
               style={{
                 width: '38px',
                 height: '38px',
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, var(--color-primary, #16A34A), var(--color-primary-dark, #166534))',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#ffffff',
                 boxShadow: 'var(--shadow-btn-primary, 0 2px 8px rgba(22, 163, 74, 0.3))',
                 flexShrink: 0,
+                display: 'block',
               }}
-            >
-              <ShoppingBasket size={20} strokeWidth={1.75} />
-            </div>
+            />
             <div>
               <h1 style={{ fontSize: 'var(--font-size-title, 18px)', fontWeight: 'var(--font-weight-heavy, 800)', lineHeight: 1.2, color: 'var(--color-text-main, #1F2937)', margin: 0 }}>
                 Green Basket <span style={{ color: 'var(--color-primary, #16A34A)' }}>Admin</span>

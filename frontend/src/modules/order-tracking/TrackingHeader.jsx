@@ -38,22 +38,18 @@ export const TrackingHeader = ({ isAdmin = false, onBackToOrders }) => {
             gap: '10px',
           }}
         >
-          <div
+          <img
+            src="/favicon.svg"
+            alt="Green Basket"
             style={{
               width: '38px',
               height: '38px',
               borderRadius: '10px',
-              background: 'linear-gradient(135deg, var(--color-primary, #16A34A), var(--color-primary-dark, #166534))',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
               boxShadow: 'var(--shadow-btn-primary, 0 2px 8px rgba(22, 163, 74, 0.3))',
               flexShrink: 0,
+              display: 'block',
             }}
-          >
-            <ShoppingBasket size={20} strokeWidth={1.75} />
-          </div>
+          />
           <div>
             <span
               style={{
